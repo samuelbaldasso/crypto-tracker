@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Crypto Tracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="not_found">Not Found</string>
+    <string name="search_hint">Search Crypto</string>
+    <string name="empty_watchlist">Watchlist is empty</string>
+    <string name="_15m">15 min</string>
+    <string name="_1h">1 hour</string>
+    <string name="_4h">4 hours</string>
+    <string name="_1d">1 day</string>
+    <string name="_1w">1 week</string>
+    <string name="_1m">1 min</string>
+</resources>
