@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/homeFragment2">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/homeFragment2"
+        android:id="@+id/homeFragment"
         android:name="com.sbaldass.cryptotracker.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment2_to_marketFragment2"
-            app:destination="@id/marketFragment2" />
+            android:id="@+id/action_homeFragment_to_marketFragment"
+            app:destination="@id/marketFragment" />
     </fragment>
     <fragment
-        android:id="@+id/marketFragment2"
+        android:id="@+id/marketFragment"
         android:name="com.sbaldass.cryptotracker.fragment.MarketFragment"
         android:label="fragment_market"
         tools:layout="@layout/fragment_market" >
         <action
-            android:id="@+id/action_marketFragment2_to_watchlistFragment"
+            android:id="@+id/action_marketFragment_to_watchlistFragment"
             app:destination="@id/watchlistFragment" />
     </fragment>
     <fragment

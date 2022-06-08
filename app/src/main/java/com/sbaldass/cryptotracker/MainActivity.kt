@@ -1,8 +1,8 @@
 package com.sbaldass.cryptotracker
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.PopupMenu
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.sbaldass.cryptotracker.databinding.ActivityMainBinding
 
@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
         val navController = navHostFragment!!.findNavController()
