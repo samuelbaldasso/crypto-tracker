@@ -78,9 +78,8 @@ class MarketFragment : Fragment() {
             val coinName = item.name.lowercase(Locale.getDefault())
             val coinSymbol = item.symbol.lowercase(Locale.getDefault())
 
-            if (coinName.contains(searchText) || coinSymbol.contains(searchText)) {
-                data.add(item)
-            }
+            if (coinName.contains(searchText) || coinSymbol.contains(searchText)) data.add(item)
         }
+        adapter.updateData(data)
     }
 }

@@ -1,5 +1,6 @@
 package com.sbaldass.cryptotracker.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.sbaldass.cryptotracker.R
 import com.sbaldass.cryptotracker.databinding.FragmentDetailsBinding
 import com.sbaldass.cryptotracker.model.CryptoCurrency
@@ -28,7 +31,59 @@ class DetailsFragment : Fragment() {
         setUpDetails(data)
         loadChart(data)
         setButtonOnClick(data)
+        addToWatchList(data)
+
         return binding.root
+    }
+
+    var watchList: ArrayList<String>? = null
+    var watchListIsChecked = false
+
+    private fun addToWatchList(data: CryptoCurrency) {
+        readData()
+        watchListIsChecked = if (watchList!!.contains(data.symbol)) {
+            binding.addWatchlistButton.setImageResource(R.drawable.ic_star)
+            true
+        } else {
+            binding.addWatchlistButton.setImageResource(R.drawable.ic_star_outline)
+            false
+        }
+
+        binding.addWatchlistButton.setOnClickListener {
+            watchListIsChecked =
+                if (!watchListIsChecked) {
+                    if (!watchList!!.contains(data.symbol)) {
+                        watchList!!.add(data.symbol)
+                    }
+                    storeData()
+                    binding.addWatchlistButton.setImageResource(R.drawable.ic_star)
+                    true
+                } else {
+                    binding.addWatchlistButton.setImageResource(R.drawable.ic_star_outline)
+                    watchList!!.remove(data.symbol)
+                    storeData()
+                    false
+                }
+        }
+    }
+
+    private fun readData() {
+        val sharedPreferences =
+            requireContext().getSharedPreferences("watchlist", Context.MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences.getString("watchlist", ArrayList<String>().toString())
+        val type = object : TypeToken<ArrayList<String>>() {}.type
+        watchList = gson.fromJson(json, type)
+    }
+
+    private fun storeData() {
+        val sharedPreferences =
+            requireContext().getSharedPreferences("watchlist", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val json = gson.toJson(watchList)
+        editor.putString("watchlist", json)
+        editor.apply()
     }
 
     private fun setButtonOnClick(item: CryptoCurrency) {

@@ -17,6 +17,4 @@ class TopLossGainPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment
         fragment.arguments = bundle
         return fragment
     }
-
-
 }

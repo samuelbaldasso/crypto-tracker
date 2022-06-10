@@ -11,6 +11,7 @@ import com.sbaldass.cryptotracker.R
 import com.sbaldass.cryptotracker.databinding.CurrencyItemLayoutBinding
 import com.sbaldass.cryptotracker.fragment.HomeFragmentDirections
 import com.sbaldass.cryptotracker.fragment.MarketFragmentDirections
+import com.sbaldass.cryptotracker.fragment.WatchlistFragmentDirections
 import com.sbaldass.cryptotracker.model.CryptoCurrency
 
 class MarketAdapter(var context: Context, var list: List<CryptoCurrency>, var type: String) :
@@ -68,6 +69,10 @@ class MarketAdapter(var context: Context, var list: List<CryptoCurrency>, var ty
             } else if (type == "market") {
                 findNavController(it).navigate(
                     MarketFragmentDirections.actionMarketFragmentToDetailsFragment(item)
+                )
+            } else {
+                findNavController(it).navigate(
+                    WatchlistFragmentDirections.actionWatchlistFragmentToDetailsFragment(item)
                 )
             }
         }

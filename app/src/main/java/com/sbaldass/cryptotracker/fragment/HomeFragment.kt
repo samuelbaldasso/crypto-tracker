@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
             })
 
         TabLayoutMediator(binding.tabLayout, binding.contentViewPager) { tab, position ->
-            var title = if (position == 0) {
+            val title = if (position == 0) {
                 "Top Gainers"
             } else {
                 "Top Losers"
