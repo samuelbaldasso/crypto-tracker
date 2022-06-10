@@ -11,8 +11,8 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_marketFragment"
-            app:destination="@id/marketFragment" />
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/marketFragment"
@@ -20,12 +20,26 @@
         android:label="fragment_market"
         tools:layout="@layout/fragment_market" >
         <action
-            android:id="@+id/action_marketFragment_to_watchlistFragment"
-            app:destination="@id/watchlistFragment" />
+            android:id="@+id/action_marketFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/watchlistFragment"
         android:name="com.sbaldass.cryptotracker.fragment.WatchlistFragment"
         android:label="fragment_watchlist"
-        tools:layout="@layout/fragment_watchlist" />
+        tools:layout="@layout/fragment_watchlist" >
+        <action
+            android:id="@+id/action_watchlistFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.sbaldass.cryptotracker.fragment.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="data"
+            app:argType="com.sbaldass.cryptotracker.model.CryptoCurrency"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

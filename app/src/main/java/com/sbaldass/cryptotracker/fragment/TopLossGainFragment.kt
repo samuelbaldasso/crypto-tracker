@@ -16,10 +16,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
-import kotlin.collections.ArrayList
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class TopLossGainFragment : Fragment() {
 
@@ -51,20 +47,22 @@ class TopLossGainFragment : Fragment() {
                     binding.spinKitView.visibility = GONE
                     val list = ArrayList<CryptoCurrency>()
 
-                    if (position == 0){
+                    if (position == 0) {
                         list.clear()
-                        for(i in 0..9){
+                        for (i in 0..9) {
                             list.add(dataItem[i])
                         }
 
-                        binding.topGainLoseRecyclerView.adapter = MarketAdapter(requireContext(), list)
-                    }else{
+                        binding.topGainLoseRecyclerView.adapter =
+                            MarketAdapter(requireContext(), list, "home")
+                    } else {
                         list.clear()
-                        for(i in 0..9){
-                            list.add(dataItem[dataItem.size-1-i])
+                        for (i in 0..9) {
+                            list.add(dataItem[dataItem.size - 1 - i])
                         }
 
-                        binding.topGainLoseRecyclerView.adapter = MarketAdapter(requireContext(), list)
+                        binding.topGainLoseRecyclerView.adapter =
+                            MarketAdapter(requireContext(), list, "home")
                     }
                 }
             }
