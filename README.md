@@ -1,1 +1,1 @@
-"# crypto_tracker" 
+Crypto tracker app built with Kotlin / Android Studio.
